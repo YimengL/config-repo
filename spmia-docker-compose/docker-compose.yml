@@ -5,4 +5,13 @@ services:
         ports:
             - "8888:8888"
         environment: 
-            ENCRYPT_KEY: "IMSYMMETRIC"    
+            ENCRYPT_KEY: "IMSYMMETRIC"
+    database:
+        image: postgres:9.5
+        ports: 
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "p0sgr@s"
+            POSTGRES_DB: "eagle_eye_local"
+
