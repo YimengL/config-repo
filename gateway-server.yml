@@ -15,9 +15,13 @@ loadbalancer.ribbon.enabled: false
 spring:
   cloud:
     gateway:
-      discovery.locator: # enables the Gateway to create routes based on services registered with service discovery
-        enabled: true
-        lowerCaseServiceId: true
+      routes:
+        - id: organization-service
+          uri: lb://organization-service
+          predicates:
+            - Path=/organization/**
+          filters:
+            - RewritePath=/organization/(?<path>.*), /$\{path}
 
 management:
   endpoints:
