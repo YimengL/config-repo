@@ -14,9 +14,6 @@ spring:
   cloud:
     loadbalancer.ribbon.enabled: false
     gateway:
-      discovery.locator:
-        enabled: true
-        lowerCaseServiceId: true
       routes:
         - id: organization-service # This optional ID is an arbitrary route ID
           uri: lb://organization-service # Sets the route's destination URI
@@ -24,7 +21,6 @@ spring:
           - Path=/organization/**
           filters:
           - RewritePath=/organization/(?<path>.*), /$\{path}
-
 
 management:
   endpoints:
