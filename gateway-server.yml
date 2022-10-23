@@ -10,6 +10,13 @@ eureka:
     serviceUrl:
       defaultZone: http://eurekaserver:8070/eureka/
 
+spring:
+  cloud:
+    gateway:
+      discovery.locator: # enables the Gateway to create routes based on services registered with service discovery
+        enabled: true
+        lowerCaseServiceId: true
+
 management:
   endpoints:
     web:
